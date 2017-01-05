@@ -2,8 +2,9 @@
   "name": "cloudant_boilerplate_nodejs",
   "version": "0.0.2",
   "private": true,
+	"main": "bin/www",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "express": "4.13.x",
