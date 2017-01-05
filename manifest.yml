@@ -6,5 +6,4 @@ applications:
   name: LogbogBC
   host: LogbogBC
   disk_quota: 1024M
-  services:
-  - LogbogBC-cloudantNoSQLDB
+  

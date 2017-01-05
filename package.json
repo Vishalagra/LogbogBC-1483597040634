@@ -10,13 +10,16 @@
     "ejs": "2.4.x",
     "cloudant": "1.4.x",
     "body-parser": "1.14.x",
+    "cookie-parser": "*",
     "method-override": "2.3.x",
     "morgan": "1.6.x",
+    "serve-favicon":"*",
     "errorhandler": "1.4.x",
-    "connect-multiparty": "2.0.x"
+    "connect-multiparty": "2.0.x",
+    "ws": "1.0.x"
   },
   "repository": {},
   "engines": {
-  	"node": "4.x"
+  "node": "4.x"
   }
 }
