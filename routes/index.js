@@ -37,24 +37,6 @@ router.post('/login', function(req, res) {
 	if(userlogin==='skat'|| userlogin==='virksomhed'){
 		console.log(' skat virksomhed user ');
 		
-	/*var obj = 	{
-				type: 'get',
-				//name: marbleName,
-				//user: user,
-				v: 1
-			};*/
-	
-	/*var obj = 	{
-			type: 'addToLogBog',
-			cprNum:'1000',
-			VirkNum:'1010',
-			cprNavn:'Jyoti Gover',
-			DOW:"20102016",
-			NoOFHours:'10',
-			v: 1
-		};
-	sendMsg(req,obj);*/
-	//sendMsg(req,JSON.stringify({type: 'get', v:1}));
 	res.render(path.join(__dirname, '../', 'views', 'logEntry.ejs'), {
         user: userlogin,
         tagline: tagline,
@@ -72,7 +54,7 @@ router.post('/login', function(req, res) {
 });
 
 //send a message, socket might be closed...
-/*function sendMsg(req, json){
+function sendMsg(req, json){
 	console.log('inside AngulargJS sendMsg');
 	console.log('printing ws');
 	console.log('app.get(ws)' + req.app.get('ws'));
@@ -84,7 +66,7 @@ router.post('/login', function(req, res) {
 			console.log('[ws error] could not send msg', e);
 		}
 	}
-}*/
+}
 
 
 router.post('/logEntry', function(req, res) {
@@ -101,7 +83,7 @@ router.post('/logEntry', function(req, res) {
 	
 	for (index = 0, len = cpr.length; index < len; ++index) {
 	    console.log(cpr[index],navn[index],NoOFHours[index],DOW[index]);
-	   var  Str= "{type: 'addToLogBog'," +;
+	   var  Str= "{type: 'addToLogBog'," +
 			"cprNum:'"+cpr[index]+"',"+
 			"VirkNum:'"+Senr+"',"+
 			"cprNavn:'"+navn[index]+"',"+
@@ -111,11 +93,8 @@ router.post('/logEntry', function(req, res) {
 			
 			
 			console.log("My variable   "+Str);
-			//sendMsg(req,Str);
+			sendMsg(req,Str);
 	}
-	
-	
-	
 	
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,

@@ -69,7 +69,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-/*connect_to_server();
+connect_to_server();
 
 
 //=================================================================================
@@ -81,7 +81,7 @@ function connect_to_server(){
 	
 	function connect(){
 		//var wsUri = 'ws://' + document.location.hostname + ':' + document.location.port;
-		var wsUri = 'ws://' + 'localhost' + ':' + '3001';
+		var wsUri = 'ws://chainServerPoC.mybluemix.net';
 		console.log('Connectiong to websocket', wsUri);
 		
 		ws = new WebSocket(wsUri);
@@ -130,20 +130,20 @@ function connect_to_server(){
 		}
 	}
 
-	function onError(evt){
+	/*function onError(evt){
 		console.log('ERROR ', evt);
-		if(!connected && bag.e == null){											//don't overwrite an error message
+		if(!connected && bag.e === null){											//don't overwrite an error message
 			$('#errorName').html('Warning');
 			$('#errorNoticeText').html('Waiting on the node server to open up so we can talk to the blockchain. ');
 			$('#errorNoticeText').append('This app is likely still starting up. ');
 			$('#errorNoticeText').append('Check the server logs if this message does not go away in 1 minute. ');
 			$('#errorNotificationPanel').fadeIn();
 		}
-	}
+	}*/
 }
 function get_ws(){
 	return ws;
 }
 module.exports = get_ws();
-app.set('ws', ws); */
+app.set('ws', ws);
 module.exports =  app ;
