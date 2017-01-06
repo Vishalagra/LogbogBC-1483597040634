@@ -85,22 +85,38 @@ router.post('/login', function(req, res) {
 		}
 	}
 }*/
+
+
 router.post('/logEntry', function(req, res) {
 	
-	console.log("trying to print log entry body"+req.body.cpr);
 	console.log("trying new" + JSON.stringify(req.body.navn));
 	
 	console.log("log entry body "+ JSON.stringify(req.body));
-	var obj = 	{
-			type: 'addToLogBog',
-			cprNum:'1002',
-			VirkNum:'1011',
-			cprNavn:'vishal',
-			DOW:"20102006",
-			NoOFHours:'10',
-			v: 1
-		};
-	//sendMsg(req,obj);
+	//{"cpr":["as","sr"],"navn":["sdf","weer"],"date":["qweff","wer"],"duration":["wer","wer"]}
+	var index, len;
+	var cpr = JSON.stringify(req.body.cpr);
+	var navn=JSON.stringify(req.body.navn);
+	var DOW = JSON.stringify(req.body.date);
+	var NoOFHours=JSON.stringify(req.body.duration);
+	
+	for (index = 0, len = cpr.length; index < len; ++index) {
+	    console.log(cpr[index],navn[index],NoOFHours[index],DOW[index]);
+	   var  Str= "{type: 'addToLogBog'," +;
+			"cprNum:'"+cpr[index]+"',"+
+			"VirkNum:'"+Senr+"',"+
+			"cprNavn:'"+navn[index]+"',"+
+			"DOW:'"+DOW[index]+"',"+
+			"NoOFHours:'"+NoOFHours[index]+"',"+
+			"v: 1}";
+			
+			
+			console.log("My variable   "+Str);
+			//sendMsg(req,Str);
+	}
+	
+	
+	
+	
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,
         tagline: tagline,
@@ -122,15 +138,5 @@ router.get('/data', function(req,res){
 		{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""},
 		{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""}]); 
 	
-	/*res.json([{"cpr": 9899553461, "navn": "Helene", "date": "20160101", "duration": "8"},
-		{"cpr": 3567432178, "navn": "Helene", "date": "20160101", "duration": "8"},
-		{"cpr": 3267894531, "navn": "Ola", "date": "20160101", "duration": "8"},
-		{"cpr": 116743289, "navn": "Barito", "date": "20160101", "duration": "8"},
-		{"cpr": 5643217843, "navn": "Mads", "date": "20160101", "duration": "8"},
-		{"cpr": 3215674396, "navn": "Orion", "date": "20160101", "duration": "8"},
-		{"cpr": 3761239075, "navn": "Palmes", "date": "20160101", "duration": "8"},
-        {"cpr": 9056342901, "navn": "Yena", "date": "20160101", "duration": "8"},
-        {"cpr": 8954321678, "navn": "Peter", "date": "20160101", "duration": "8"},
-        {"cpr": 8764316789, "navn": "Santa", "date": "20160101", "duration": "8"}]);*/
 });
 module.exports = router;
