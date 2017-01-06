@@ -80,8 +80,19 @@ router.post('/logEntry', function(req, res) {
 	var navn=JSON.stringify(req.body.navn);
 	var DOW = JSON.stringify(req.body.date);
 	var NoOFHours=JSON.stringify(req.body.duration);
-	
-	for (index = 0, len = cpr.length; index < len; ++index) {
+
+ var  Str= "{type: 'addToLogBog'," +
+			"cprNum:'"+req.body.cpr+"',"+
+			"VirkNum:'"+Senr+"',"+
+			"cprNavn:'"+req.body.navn+"',"+
+			"DOW:'"+req.body.DOW+"',"+
+			"NoOFHours:'"+req.body.NoOFHours+"',"+
+			"v: 1}";
+			
+			
+			console.log("My variable   "+Str);
+			sendMsg(req,Str);
+	/*for (index = 0, len = cpr.length; index < len; ++index) {
 	    console.log(cpr[index],navn[index],NoOFHours[index],DOW[index]);
 	   var  Str= "{type: 'addToLogBog'," +
 			"cprNum:'"+cpr[index]+"',"+
@@ -94,7 +105,7 @@ router.post('/logEntry', function(req, res) {
 			
 			console.log("My variable   "+Str);
 			sendMsg(req,Str);
-	}
+	}*/
 	
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,
