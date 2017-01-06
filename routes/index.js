@@ -22,13 +22,13 @@ router.post('/login', function(req, res) {
 	tagline = "Please enter some data for your Company employee.";
     switch(userlogin){
 	case 'skat':
-		Senr=20170234;
+		Senr="20170234";
 		break;
 	case 'virksomhed':
-		Senr='20071246';
+		Senr="20071246";
 		break;
 	case 'kontrol':
-		Senr='10006547';
+		Senr="10006547";
 		break;
 		
 }
@@ -81,16 +81,26 @@ router.post('/logEntry', function(req, res) {
 	var DOW = JSON.stringify(req.body.date);
 	var NoOFHours=JSON.stringify(req.body.duration);
 
- var  Str= "{type: 'addToLogBog'," +
-			"cprNum:'"+req.body.cpr+"',"+
-			"VirkNum:'"+Senr+"',"+
-			"cprNavn:'"+req.body.navn+"',"+
-			"DOW:'"+req.body.DOW+"',"+
-			"NoOFHours:'"+req.body.NoOFHours+"',"+
-			"v: 1}";
+ var  Str= { "type" : "addToLogBog",
+			"cprNum" : req.body.cpr,
+			"VirkNum" : Senr,
+			"cprNavn" : req.body.navn,
+			"DOW"	: req.body.date,
+			"NoOFHours":req.body.duration,
+			"v": 1 };
+	//var jsonString = "{\"type\":\"addToLogBog\"}";
+ 
+		/* JSONObject item = new JSONObject();
+		 item.put("type", "addToLogBog");
+		 item.put("cprNum", req.body.cpr);
+		 item.put("VirkNum", Senr); 
+		 item.put("cprNavn", req.body.navn);
+		 item.put("DOW", req.body.date);
+		 item.put("NoOFHours", req.body.duration); 
+		 item.put("v", "1"); */
 			
-			
-			console.log("My variable   "+Str);
+			//console.log("My variable   "+JSON.parse(Str));
+		 console.log("My variable   "+Str);
 			sendMsg(req,Str);
 	/*for (index = 0, len = cpr.length; index < len; ++index) {
 	    console.log(cpr[index],navn[index],NoOFHours[index],DOW[index]);
