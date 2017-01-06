@@ -72,7 +72,7 @@ function sendMsg(req, json){
 router.post('/logEntry', function(req, res) {
 	
 	console.log("trying new" + JSON.stringify(req.body.navn));
-	
+	console.log("trying non JSON" + req.body.navn);
 	console.log("log entry body "+ JSON.stringify(req.body));
 	//{"cpr":["as","sr"],"navn":["sdf","weer"],"date":["qweff","wer"],"duration":["wer","wer"]}
 	var index, len;
