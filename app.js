@@ -10,11 +10,11 @@ var users = require('./routes/user');
 
 var app = express();
 var ws = require('ws');		
-var WebSocket = require('ws/lib/WebSocket')
+var WebSocket = require('ws/lib/WebSocket');
 
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'dev';
 app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env === 'development';
+app.locals.ENV_DEVELOPMENT = env === 'dev';
 
 // view engine setup
 
@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 
-if (app.get('env') === 'development') {
+if (app.get('env') === 'dev') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
@@ -130,16 +130,16 @@ function connect_to_server(){
 		}
 	}
 
-	/*function onError(evt){
+	function onError(evt){
 		console.log('ERROR ', evt);
-		if(!connected && bag.e === null){											//don't overwrite an error message
+		if(!connected /*&& bag.e === null*/){											//don't overwrite an error message
 			$('#errorName').html('Warning');
 			$('#errorNoticeText').html('Waiting on the node server to open up so we can talk to the blockchain. ');
 			$('#errorNoticeText').append('This app is likely still starting up. ');
 			$('#errorNoticeText').append('Check the server logs if this message does not go away in 1 minute. ');
 			$('#errorNotificationPanel').fadeIn();
 		}
-	}*/
+	}
 }
 function get_ws(){
 	return ws;

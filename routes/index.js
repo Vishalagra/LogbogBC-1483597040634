@@ -48,10 +48,13 @@ router.post('/login', function(req, res) {
 	        tagline: tagline,
 	        senr: Senr
 	    });
-	}else 
+	}else {
 		res.render(path.join(__dirname, '../', 'views', 'error.ejs'));
+	}
 	
 });
+
+
 
 //send a message, socket might be closed...
 function sendMsg(req, json){
@@ -67,7 +70,6 @@ function sendMsg(req, json){
 		}
 	}
 }
-
 
 router.post('/logEntry', function(req, res) {
 	
@@ -88,18 +90,6 @@ router.post('/logEntry', function(req, res) {
 			"DOW"	: req.body.date,
 			"NoOFHours":req.body.duration,
 			"v": 1 };
-	//var jsonString = "{\"type\":\"addToLogBog\"}";
- 
-		/* JSONObject item = new JSONObject();
-		 item.put("type", "addToLogBog");
-		 item.put("cprNum", req.body.cpr);
-		 item.put("VirkNum", Senr); 
-		 item.put("cprNavn", req.body.navn);
-		 item.put("DOW", req.body.date);
-		 item.put("NoOFHours", req.body.duration); 
-		 item.put("v", "1"); */
-			
-			//console.log("My variable   "+JSON.parse(Str));
 		 console.log("My variable   "+Str);
 			sendMsg(req,Str);
 	/*for (index = 0, len = cpr.length; index < len; ++index) {
@@ -123,6 +113,8 @@ router.post('/logEntry', function(req, res) {
         senr: Senr
     });
 });
+
+
 
 router.get('/error', function(req, res, next) {
 	console.log("username and password"+req.body);
