@@ -87,9 +87,10 @@ router.post('/login', function(req, res) {
 }*/
 router.post('/logEntry', function(req, res) {
 	
-	console.log("trying to print log entry body"+req.body.personalDetail);
-	console.log("trying new" + JSON.stringify(req.body.personalDetail));
-	console.log(JSON.stringify(req.body));
+	console.log("trying to print log entry body"+req.body.cpr);
+	console.log("trying new" + JSON.stringify(req.body.navn));
+	
+	console.log("log entry body "+ JSON.stringify(req.body));
 	var obj = 	{
 			type: 'addToLogBog',
 			cprNum:'1002',
