@@ -11,10 +11,11 @@ var users = require('./routes/user');
 var app = express();
 var ws = require('ws');		
 var WebSocket = require('ws/lib/WebSocket');
+var searchRes;
 
-var env = process.env.NODE_ENV || 'dev';
+var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env === 'dev';
+app.locals.ENV_DEVELOPMENT = env === 'development';
 
 // view engine setup
 
@@ -47,7 +48,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 
-if (app.get('env') === 'dev') {
+if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
@@ -111,6 +112,8 @@ function connect_to_server(){
 			var msgObj = JSON.parse(msg.data);
 			if(msgObj.marble){
 				console.log('rec', msgObj.msg, msgObj);
+				console.log("inside marble to get searchRes");
+				searchRes= msgObj;
 				//build_ball(msgObj.marble);
 			}
 			else if(msgObj.msg === 'chainstats'){
@@ -123,27 +126,44 @@ function connect_to_server(){
 							};
 				new_block(temp);								//send to blockchain.js
 			}
-			else console.log('rec', msgObj.msg, msgObj);
+			else {
+				console.log("inside final else to get searchRes");
+				searchRes= msgObj.msg;
+				console.log('receive', msgObj.msg, msgObj);
+				console.log("searchRes "+searchRes);
+				app.set('searchRes',searchRes);
+				
+				console.log("search result on app set " + app.get('searchRes'));
+				
+			}
 		}
 		catch(e){
 			console.log('ERROR', e);
 		}
 	}
 
-	function onError(evt){
+	/*function onError(evt){
 		console.log('ERROR ', evt);
-		if(!connected /*&& bag.e === null*/){											//don't overwrite an error message
+		if(!connected && bag.e === null){											//don't overwrite an error message
 			$('#errorName').html('Warning');
 			$('#errorNoticeText').html('Waiting on the node server to open up so we can talk to the blockchain. ');
 			$('#errorNoticeText').append('This app is likely still starting up. ');
 			$('#errorNoticeText').append('Check the server logs if this message does not go away in 1 minute. ');
 			$('#errorNotificationPanel').fadeIn();
 		}
-	}
+	}*/
 }
 function get_ws(){
 	return ws;
 }
+function get_searchResult(){
+	console.log("search result is"+searchRes);
+	return searchRes;
+}
 module.exports = get_ws();
+
+module.exports = get_ws();
+module.exports = get_searchResult();
+
 app.set('ws', ws);
 module.exports =  app ;

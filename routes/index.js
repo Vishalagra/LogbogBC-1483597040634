@@ -58,11 +58,12 @@ router.post('/login', function(req, res) {
 
 //send a message, socket might be closed...
 function sendMsg(req, json){
-	console.log('inside AngulargJS sendMsg');
+	console.log('inside chaincode sendMsg');
 	console.log('printing ws');
 	console.log('app.get(ws)' + req.app.get('ws'));
 	if(req.app.get('ws')){
 		try{
+			console.log("trying to send finally");
 			req.app.get('ws').send(JSON.stringify(json));
 		}
 		catch(e){
@@ -71,59 +72,65 @@ function sendMsg(req, json){
 	}
 }
 
+
 router.post('/logEntry', function(req, res) {
 	
-	console.log("trying new" + JSON.stringify(req.body.navn));
-	console.log("trying non JSON" + req.body.navn);
+	console.log("trying json parse on body" + req.body.cpr[0]);
+	//console.log("trying non JSON" + req.body.navn);
 	console.log("log entry body "+ JSON.stringify(req.body));
-	//{"cpr":["as","sr"],"navn":["sdf","weer"],"date":["qweff","wer"],"duration":["wer","wer"]}
-	var index, len;
-	var cpr = JSON.stringify(req.body.cpr);
-	var navn=JSON.stringify(req.body.navn);
-	var DOW = JSON.stringify(req.body.date);
-	var NoOFHours=JSON.stringify(req.body.duration);
-
- var  Str= { "type" : "addToLogBog",
-			"cprNum" : req.body.cpr,
-			"VirkNum" : Senr,
-			"cprNavn" : req.body.navn,
-			"DOW"	: req.body.date,
-			"NoOFHours":req.body.duration,
-			"v": 1 };
-		 console.log("My variable   "+Str);
-			sendMsg(req,Str);
-	/*for (index = 0, len = cpr.length; index < len; ++index) {
-	    console.log(cpr[index],navn[index],NoOFHours[index],DOW[index]);
-	   var  Str= "{type: 'addToLogBog'," +
-			"cprNum:'"+cpr[index]+"',"+
-			"VirkNum:'"+Senr+"',"+
-			"cprNavn:'"+navn[index]+"',"+
-			"DOW:'"+DOW[index]+"',"+
-			"NoOFHours:'"+NoOFHours[index]+"',"+
-			"v: 1}";
+	
+	//{"cpr":["3213","1213"],"navn":["re","123"],"date":["wet`1r","123"],"duration":["qwr","123"]}
+			var index;
+			var len;
+	for (index = 0, len = req.body.cpr.length; index < len; ++index) {
+	    console.log(req.body.cpr[index],req.body.navn[index],req.body.duration[index],req.body.date[index]);
+	    var  Str= { "type" : "addToLogBog",
+				"cprNum" : req.body.cpr[index],
+				"VirkNum" : Senr,
+				"cprNavn" : req.body.navn[index],
+				"DOW"	: req.body.date[index],
+				"NoOFHours":req.body.duration[index],
+				"v": 1 };
 			
 			
 			console.log("My variable   "+Str);
 			sendMsg(req,Str);
-	}*/
+	}
 	
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,
-        tagline: tagline,
+        query: "you can query the data  for senr here",
         senr: Senr
     });
 });
 
-
+router.post('/logQuery', function(req, res, next) {
+	console.log("log query body"+req.body.searchSenr);
+	 var obj = 	{
+					type: 'searchLogBog',
+					cprNum:'',
+					VirkNum:'20071246',
+					v:1
+				}; 
+	  console.log("My variable   "+obj);
+		sendMsg(req,obj);
+		
+		console.log("searchresult "+ req.app.get('searchRes'));
+		//console.log("searchresult "+ app.get('searchRes'));
+  res.render(path.join(__dirname, '../', 'views', 'logQueryResult.ejs'),{
+	  user: userlogin,
+	  senr: Senr,
+	  SearchSenr: req.body.searchSenr,
+	  Result : req.app.get('searchRes')
+  });
+});
 
 router.get('/error', function(req, res, next) {
 	console.log("username and password"+req.body);
   res.render(path.join(__dirname, '../', 'views', 'error.ejs'));
 });
 
-router.get('/title',function(req,res){
-	res.json([{ title: 'LogEntry Page' }]);
-});
+
 
 router.get('/data', function(req,res){
 	res.json([{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""},
