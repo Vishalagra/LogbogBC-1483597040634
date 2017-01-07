@@ -104,7 +104,7 @@ function connect_to_server(){
 	function onClose(evt){
 		console.log('WS DISCONNECTED', evt);
 		connected = false;
-		setTimeout(function(){ connect(); }, 5000);					//try again one more time, server restarts are quick
+		//setTimeout(function(){ connect(); }, 5000);					//try again one more time, server restarts are quick
 	}
 
 	function onMessage(msg){
