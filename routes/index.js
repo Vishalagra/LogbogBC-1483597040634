@@ -60,7 +60,7 @@ router.post('/login', function(req, res) {
 function sendMsg(req, json){
 	console.log('inside chaincode sendMsg');
 	console.log('printing ws');
-	console.log('app.get(ws)' + req.app.get('ws'));
+	//console.log('app.get(ws)' + req.app.get('ws'));
 	if(req.app.get('ws')){
 		try{
 			console.log("trying to send finally");

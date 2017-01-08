@@ -87,7 +87,7 @@ function connect_to_server(){
 		
 		ws = new WebSocket(wsUri);
 		ws.onopen = function(evt) { onOpen(evt); };
-		ws.onclose = function(evt) { onClose(evt); };
+		//ws.onclose = function(evt) { onClose(evt); };
 		ws.onmessage = function(evt) { onMessage(evt); };
 		ws.onerror = function(evt) { onError(evt); };
 	}
@@ -156,14 +156,10 @@ function connect_to_server(){
 function get_ws(){
 	return ws;
 }
-function get_searchResult(){
-	console.log("search result is"+searchRes);
-	return searchRes;
-}
-module.exports = get_ws();
+
 
 module.exports = get_ws();
-module.exports = get_searchResult();
+
 
 app.set('ws', ws);
 module.exports =  app ;
