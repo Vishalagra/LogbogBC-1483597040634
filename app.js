@@ -128,7 +128,7 @@ function connect_to_server(){
 			}
 			else {
 				console.log("inside final else to get searchRes");
-				searchRes= msgObj.msg;
+				searchRes= msgObj.employees;
 				console.log('receive', msgObj.msg, msgObj);
 				console.log("searchRes "+searchRes);
 				app.set('searchRes',searchRes);

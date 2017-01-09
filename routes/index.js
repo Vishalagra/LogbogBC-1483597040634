@@ -7,6 +7,7 @@ var Senr;
 /* GET home page. */
 var tagline;
 var app = require('../app');
+var searchSenr;
 
 router.get('/', function(req, res, next) {
 	
@@ -134,11 +135,12 @@ router.post('/logEntry', function(req, res) {
 });
 
 router.post('/logQuery', function(req, res, next) {
-	console.log("log query body"+req.body.searchSenr);
+	searchSenr = req.body.searchSenr;
+	console.log("log query body"+searchSenr);
 	 var obj = 	{
 					type: 'searchLogBog',
 					cprNum:'',
-					VirkNum:'20071246',
+					VirkNum:searchSenr,
 					v:1
 				}; 
 	  console.log("My variable   "+obj);
@@ -149,8 +151,7 @@ router.post('/logQuery', function(req, res, next) {
   res.render(path.join(__dirname, '../', 'views', 'SearchConfirm.ejs'),{
 	  user: userlogin,
 	  senr: Senr,
-	  SearchSenr: req.body.searchSenr,
-	  Result : req.app.get('searchRes')
+	  SearchSenr: searchSenr
   });
 });
 
@@ -159,7 +160,7 @@ router.post('/logBogSearchReview', function(req, res, next) {
   res.render(path.join(__dirname, '../', 'views', 'logQueryResult.ejs'),{
 	  user: userlogin,
 	  senr: Senr,
-	  SearchSenr: req.body.searchSenr,
+	  SearchSenr: searchSenr,
 	  Result : req.app.get('searchRes')
   });
 });
@@ -172,9 +173,7 @@ router.get('/error', function(req, res, next) {
 
 
 router.get('/data', function(req,res){
-	res.json([{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""},
-		{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""},
-		{"CPRNum":1002,"VirkNum":1011,"CPRNavn":"vishal","DOW":"20102006","NoOfHours":10,"Comments":""}]); 
+	res.json(req.app.get('searchRes')); 
 	
 });
 module.exports = router;
