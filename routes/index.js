@@ -143,7 +143,7 @@ router.post('/logQuery', function(req, res, next) {
 				}; 
 	  console.log("My variable   "+obj);
 		sendMsg(req,obj);
-		setTimeout(function(){console.log("sleeping for 10000 milliseconds") }, 10000);
+		//setTimeout(function(){console.log("sleeping for 10000 milliseconds") }, 10000);
 		console.log("searchresult "+ req.app.get('searchRes'));
 		//console.log("searchresult "+ app.get('searchRes'));
   res.render(path.join(__dirname, '../', 'views', 'SearchConfirm.ejs'),{

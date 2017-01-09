@@ -5,9 +5,7 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/skat.min.css" rel="stylesheet">
-<link href="css/guide.css" rel="stylesheet" type="text/css" /> 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="css/guide.css" rel="stylesheet" type="text/css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -33,10 +31,9 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">LogBog App</a>
+			<h3 class="skts-header-link">LogBog App</h3>
 		</div>
-		
-		<a class="skts-login pull-right" href="/">Log af</a>
+		<a class="skts-login pull-right" href="/"><h3>Log af</h3></a>
 		
 	 </div>
     </header>
@@ -57,16 +54,17 @@
 					<h4>
 						User Name: <%= user %> <br> Senr: <%= senr %>
 						Resultset : <%= Result %>
+						<br><br><br><br><br>
 					</h4>
 				</div>
-				<table>
-					<tr colspan="3">
-					
-					<tr>
-						<td><h4>You are searching for Senr :</h4></td>
-						<td><h4><%= SearchSenr %> <br></h4></td>
+				<table align = "center">
+					<tr colspan="3" align = "center">
+						<!-- <td> fv188 ada - genstartebj works. </td> -->
 					</tr>
-					<tr>Click to confirm and view result</tr>
+					<tr>
+						
+						<td><h4 align="center"> You are searching for the SENR : <%= Result %></h4></td>
+					</tr>
 				</table>
 
 			</div>
@@ -77,8 +75,7 @@
 					</tr>
 					<tr>
 						
-						<td><input type="submit" class="btn btn-primary"
-							value="Go back" onclick="submit()" /></td>
+						
 						<td><input type="submit" class="btn btn-primary"
 							value="View Results" onclick="submit()" /></td>
 
