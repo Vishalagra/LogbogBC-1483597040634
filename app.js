@@ -87,7 +87,7 @@ function connect_to_server(){
 		
 		ws = new WebSocket(wsUri);
 		ws.onopen = function(evt) { onOpen(evt); };
-		//ws.onclose = function(evt) { onClose(evt); };
+		ws.onclose = function(evt) { onClose(evt); };
 		ws.onmessage = function(evt) { onMessage(evt); };
 		ws.onerror = function(evt) { onError(evt); };
 	}
@@ -104,7 +104,7 @@ function connect_to_server(){
 	function onClose(evt){
 		console.log('WS DISCONNECTED', evt);
 		connected = false;
-		//setTimeout(function(){ connect(); }, 5000);					//try again one more time, server restarts are quick
+		setTimeout(function(){ connect(); }, 1);					//try again one more time, server restarts are quick
 	}
 
 	function onMessage(msg){
