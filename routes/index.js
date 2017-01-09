@@ -46,7 +46,7 @@ router.post('/login', function(req, res) {
 	}else if(userlogin==='kontrol'){
 		res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
 	        user: userlogin,
-	        tagline: tagline,
+	        query: "you can query the data  for SENR here",
 	        senr: Senr
 	    });
 	}else {
