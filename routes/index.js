@@ -79,24 +79,53 @@ router.post('/logEntry', function(req, res) {
 	//console.log("trying non JSON" + req.body.navn);
 	console.log("log entry body "+ JSON.stringify(req.body));
 	
-	//{"cpr":["3213","1213"],"navn":["re","123"],"date":["wet`1r","123"],"duration":["qwr","123"]}
-			var index=0;
-			var len =0;
-	for (index = 0, len = req.body.cpr.length; index < len; ++index) {
-	    console.log(req.body.cpr[index],req.body.navn[index],req.body.duration[index],req.body.date[index]);
-	    var  Str= { "type" : "addToLogBog",
+
+		// {"cpr":["3213","1213"],"navn":["re","123"],"date":["wet`1r","123"],"duration":["qwr","123"]}
+	// cpr:"3213"
+	var index = 0;
+	var len = 0;
+	var cpr = req.body.cpr;
+	var navn = req.body.navn;
+	var duration = req.body.duration;
+	var date = req.body.date;
+
+	// Array.isArray(spr)
+	// cpr isntance
+
+	if (Array.isArray(cpr)) {
+		for (index = 0, len = req.body.cpr.length; index < len; ++index) {
+			console.log(req.body.cpr[index], req.body.navn[index],
+					req.body.duration[index], req.body.date[index]);
+			var Str = {
+				"type" : "addToLogBog",
 				"cprNum" : req.body.cpr[index],
 				"VirkNum" : Senr,
 				"cprNavn" : req.body.navn[index],
-				"DOW"	: req.body.date[index],
-				"NoOFHours":req.body.duration[index],
-				"v": 1 };
-			
-			
-			console.log("My variable   "+Str);
-			sendMsg(req,Str);
+				"DOW" : req.body.date[index],
+				"NoOFHours" : req.body.duration[index],
+				"v" : 1
+			};
+
+			console.log("My variable   " + Str);
+			sendMsg(req, Str);
+		}
+	}else{
+		console.log(req.body.cpr, req.body.navn,
+				req.body.duration, req.body.date);
+		var String = {
+			"type" : "addToLogBog",
+			"cprNum" : req.body.cpr,
+			"VirkNum" : Senr,
+			"cprNavn" : req.body.navn,
+			"DOW" : req.body.date,
+			"NoOFHours" : req.body.duration,
+			"v" : 1
+		};
+
+		console.log("My variable   " + String);
+		sendMsg(req, String);
+		
 	}
-	
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,
         query: "you can query the data  for senr here",
@@ -114,7 +143,7 @@ router.post('/logQuery', function(req, res, next) {
 				}; 
 	  console.log("My variable   "+obj);
 		sendMsg(req,obj);
-		
+		setTimeout(function(){console.log("sleeping for 10000 milliseconds") }, 10000);
 		console.log("searchresult "+ req.app.get('searchRes'));
 		//console.log("searchresult "+ app.get('searchRes'));
   res.render(path.join(__dirname, '../', 'views', 'logQueryResult.ejs'),{
