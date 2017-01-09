@@ -128,7 +128,7 @@ router.post('/logEntry', function(req, res) {
 	}
 	res.render(path.join(__dirname, '../', 'views', 'logQuery.ejs'), {
         user: userlogin,
-        query: "you can query the data  for senr here",
+        query: "you can query the data  for SENR here",
         senr: Senr
     });
 });
@@ -146,6 +146,16 @@ router.post('/logQuery', function(req, res, next) {
 		setTimeout(function(){console.log("sleeping for 10000 milliseconds") }, 10000);
 		console.log("searchresult "+ req.app.get('searchRes'));
 		//console.log("searchresult "+ app.get('searchRes'));
+  res.render(path.join(__dirname, '../', 'views', 'SearchConfirm.ejs'),{
+	  user: userlogin,
+	  senr: Senr,
+	  SearchSenr: req.body.searchSenr,
+	  Result : req.app.get('searchRes')
+  });
+});
+
+router.post('/logBogSearchReview', function(req, res, next) {
+	
   res.render(path.join(__dirname, '../', 'views', 'logQueryResult.ejs'),{
 	  user: userlogin,
 	  senr: Senr,

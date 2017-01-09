@@ -1,0 +1,199 @@
+html {
+  overflow-y:scroll;
+}
+code {
+    color: rgb(221, 17, 68);
+}
+.bs-docs-example:after {
+    content: "Eksempel";
+}
+.bs-docs-example:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    content: "Example";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+}
+
+.bs-docs-example {
+    background-color: #FFFFFF;
+    border: 1px solid #ebebf3;
+    border-radius: 4px 4px 4px 4px;
+    margin: 15px 0;
+    padding: 3em 0;
+    position: relative;
+}
+
+.bs-docs-example + .prettyprint {
+    margin-top: -16px;
+    margin-bottom: 3em;
+}
+
+.bs-docs-example:after {
+  content: "Eksempel";
+}
+.bs-docs-example .container {
+	width: 100%;
+}
+.bs-callout {
+    border-left: 5px solid #EEEEEE;
+    margin: 20px 0;
+    padding: 1px 1px 1px 15px;
+}
+.bs-callout-info {
+    background-color: #F0F7FD;
+    border-color: #D0E3F0;
+}
+.skts-nav-guide.affix {
+    position:fixed;  
+    top: 0;  
+}
+.skts-nav-guide {
+	width: 230px !important;
+}
+
+.skts-nav-guide:before {
+    top: -1.36em;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(219, 65, 87, 0);
+    border-top-color: #ececec;
+    border-width: 32px;
+    left: 90px;
+}
+.skts-nav-guide.affix:before {
+    border: none;
+}
+.skts-nav-guide .nav {
+    background: #ECECEC;
+    border-radius: 0.2em;
+}
+.skts-nav-guide li>a {
+    color: black;
+    padding: 0.7rem 0 0.7rem 2rem;
+    text-decoration: none;
+}
+.skts-nav-guide li.active a {
+    padding-left: 1.5rem;
+}
+.skts-nav-guide .level-2 {
+	display: none;
+}
+.skts-nav-guide .level-2 li > a {
+    padding: 0.3rem 0 0.3rem 3rem;
+}
+
+.skts-nav-guide li.active {
+    border-left: solid 0.5rem #395F77;
+}
+
+.skts-nav-guide .level-2 li.active {
+    border-left: none;
+}
+.skts-nav-guide .level-2 li {
+    font-weight: normal;
+}
+.skts-nav-guide li.active,
+.skts-nav-guide .level-2 li.active {
+	font-weight: bold;
+}
+.skts-nav-guide li.active .level-2 {
+	display: block;
+}
+.h1--guide {
+    font-size: 2.5em;
+}
+.h2--guide {
+	font-size: 2em;
+    margin-top: 1em;
+}
+.h3--guide {
+	font-size: 1.3em;
+	margin-bottom: 0.5em;
+    margin-top: 1em;
+}
+.h4--guide {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+/* PRETTIFY STYLES */
+.com { color: #93a1a1; }
+.lit { color: #195f91; }
+.pun, .opn, .clo { color: #93a1a1; }
+.fun { color: #dc322f; }
+.str, .atv { color: #D14; }
+.kwd, .prettyprint .tag { color: #1e347b; }
+.typ, .atn, .dec, .var { color: teal; }
+.pln { color: #48484c; }
+
+.prettyprint {
+	background: rgb(247, 247, 247);
+	border: 1px solid #ebebf3;
+	font-size: 0.7em;
+	padding: 0 0 0 1em;
+	line-height: 1.5em;
+}
+.prettyprint.linenums {
+	-webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+	-moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+	box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+ol.linenums {
+	padding: 0 0 0 2.8em;
+	margin: 0;
+}
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums li {
+	color: #bebec5;
+	text-shadow: 0 1px 0 #fff;
+	padding: 0 0 0 0.1em;
+}
+
+li.L0,li.L2,li.L4,li.L6,li.L8 {
+	background: rgb(241, 241, 241);
+}
+
+.skts-nav-bottom > ul > li > a{
+    text-decoration: none;
+    border-bottom: 1px solid #395f77;
+    padding: 12px 0 6px;
+    background: url(../../sktscommon/images/arrow.svg) right no-repeat;
+}
+
+
+.icon-table {
+    display: table;
+    width: 100%;
+}
+.icon-table a {
+    height: 4rem;
+    width: 4rem;
+    display: block;
+}
+.icon-table .row{
+    display: table-row;
+}
+.icon-table [class^="col-"]  {
+    display: table-cell;
+    vertical-align: bottom;
+    float: none;
+    text-align: center;
+    border-bottom: solid 1px #ccc;
+    padding-top: 2rem;
+}
+.icon-table [class^="col-"] div:last-child {
+    display: block;
+    padding: 1rem;
+}

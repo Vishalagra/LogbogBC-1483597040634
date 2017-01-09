@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="css/skat.min.css" rel="stylesheet">
+<link href="css/guide.css" rel="stylesheet" type="text/css" /> 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -17,34 +16,40 @@
 
 <title>LogBook Query</title>
 </head>
-<body ng-app="queryModalnew" class=loginBody>
+<body ng-app="queryModalnew" >
 	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">LogBog App</a>
-			</div>
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/"> Home -> </a></li>
-					<li><a href="/login"> LogEntry -> </a></li>
-					<li><a href="/logEntry"> LogQuery</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>User</a></li>
-					<li><a href="/"><span class="glyphicon glyphicon-log-in"></span>
-							Logout</a></li>
-				</ul>
-			</div>
+ 
+ 	<header>
+              <div class="skts-logo">
+                    <a href="index.ejs"><br/></a>
+                </div>
+               <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">LogBog App</a>
 		</div>
-	</nav>
+		
+		<a class="skts-login pull-right" href="/">Log af</a>
+		
+	 </div>
+    </header>
+</nav>
+
+	<div class="skts-breadcrumb-container">
+	<ol class="breadcrumb container">
+                    <li>Home</li>
+                    <li>LogEntry</li>
+                    <li class="active">LogQuery</li>
+                </ol>
+
+	
+     </div>
+
 	<form name="logQueryFormNew" role="form" action="/logQuery" method="post">
 		<div ng-controller="QueryCtrlnew" class="container">
 			<div>

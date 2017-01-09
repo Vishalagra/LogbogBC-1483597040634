@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px"
+	 viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<g id="Lag_1">
+	<g>
+		<g>
+			<path fill="#FFFFFF" d="M18,22V2.6C7,3.2,0.3,11.4,0.3,21.4c0,10.4,8.5,18.4,18.9,18.4c9.9,0,18.1-7.9,18.9-17.9H18z"/>
+			<path fill="#FFFFFF" d="M39,21H19.4l0-21h0.7C31.5,0,39,8.9,39,20.2V21z M20.8,19h16.7C37.2,8,30.7,2.2,20.8,1.9L20.8,19z"/>
+		</g>
+		<polygon fill="#FFFFFF" points="25.7,2.3 20.5,7.6 19.6,6.8 24.8,1.5 		"/>
+		<polygon fill="#FFFFFF" points="29.2,3 20.5,11.7 19.6,10.9 27.6,2.8 		"/>
+		<polygon fill="#FFFFFF" points="31.8,5.1 20.7,16.3 19.8,15.4 30.9,4.3 		"/>
+		
+			<rect x="18.1" y="13.1" transform="matrix(0.7068 -0.7074 0.7074 0.7068 -1.8063 23.1214)" fill="#FFFFFF" width="17.8" height="1.2"/>
+		
+			<rect x="23.6" y="14.7" transform="matrix(0.7063 -0.7079 0.7079 0.7063 -1.8184 26.1828)" fill="#FFFFFF" width="14.2" height="1.2"/>
+		
+			<rect x="29.4" y="16.6" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -2.1676 29.113)" fill="#FFFFFF" width="9.3" height="1.2"/>
+		
+			<rect x="35.8" y="18.8" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -2.7842 32.1141)" fill="#FFFFFF" width="3.1" height="1.2"/>
+	</g>
+</g>
+<g id="tekst">
+</g>
+</svg>
