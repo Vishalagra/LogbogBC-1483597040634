@@ -118,13 +118,13 @@ function connect_to_server(){
 			}
 			else if(msgObj.msg === 'chainstats'){
 				console.log('rec', msgObj.msg, ': ledger blockheight', msgObj.chainstats.height, 'block', msgObj.blockstats.height);
-				var e = formatDate(msgObj.blockstats.transactions[0].timestamp.seconds * 1000, '%M/%d/%Y &nbsp;%I:%m%P');
+				/*var e = formatDate(msgObj.blockstats.transactions[0].timestamp.seconds * 1000, '%M/%d/%Y &nbsp;%I:%m%P');
 				$('#blockdate').html('<span style="color:#fff">TIME</span>&nbsp;&nbsp;' + e + ' UTC');
 				var temp =  {
 								id: msgObj.blockstats.height, 
 								blockstats: msgObj.blockstats
 							};
-				new_block(temp);								//send to blockchain.js
+				new_block(temp);*/								//send to blockchain.js
 			}
 			else {
 				console.log("inside final else to get searchRes");
@@ -142,23 +142,16 @@ function connect_to_server(){
 		}
 	}
 
-	/*function onError(evt){
+	function onError(evt){
 		console.log('ERROR ', evt);
-		if(!connected && bag.e === null){											//don't overwrite an error message
-			$('#errorName').html('Warning');
-			$('#errorNoticeText').html('Waiting on the node server to open up so we can talk to the blockchain. ');
-			$('#errorNoticeText').append('This app is likely still starting up. ');
-			$('#errorNoticeText').append('Check the server logs if this message does not go away in 1 minute. ');
-			$('#errorNotificationPanel').fadeIn();
+		if(!connected){
+			//don't overwrite an error message
+			console.log("it is not connection am throwing error")
+			
 		}
-	}*/
-}
-function get_ws(){
-	return ws;
+	}
 }
 
-
-module.exports = get_ws();
 
 
 app.set('ws', ws);
