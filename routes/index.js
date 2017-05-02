@@ -112,10 +112,10 @@ router.post('/login', function(req, res) {
 	tagline = "Please enter some data for your Company employee.";
     switch(userlogin){
 	case 'skat':
-		Senr="20170234";
+		Senr="20170246";
 		break;
 	case 'virksomhed':
-		Senr="20071246";
+		Senr="20071248";
 		break;
 	case 'kontrol':
 		Senr="10006547";
@@ -158,8 +158,8 @@ function sendMsg(req, json){
 			console.log("trying to send finally");
 			//req.app.get('ws').send(JSON.stringify(json));
 			var sleep = require('system-sleep');
-			sleep(5*1000); // sleep for 5 seconds
-			//setTimeout(ws.send(JSON.stringify(json)), 5000);
+			sleep(10*1000); // sleep for 10 seconds
+			
 			ws.send(JSON.stringify(json));
 		}
 		catch(e){
