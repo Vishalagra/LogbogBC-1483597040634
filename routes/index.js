@@ -252,12 +252,12 @@ router.post('/logQuery', function(req, res, next) {
 });
 
 router.post('/logBogSearchReview', function(req, res, next) {
-	
+	console.log("this is my result page finally"+searchRes);
   res.render(path.join(__dirname, '../', 'views', 'logQueryResult.ejs'),{
 	  user: userlogin,
 	  senr: Senr,
 	  SearchSenr: searchSenr,
-	  Result : searchRes
+	  Result: searchRes
   });
 });
 
