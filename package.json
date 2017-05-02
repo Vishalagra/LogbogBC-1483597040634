@@ -17,6 +17,7 @@
     "serve-favicon":"*",
     "errorhandler": "1.4.x",
     "connect-multiparty": "2.0.x",
+    "system-sleep": "*.*",
     "ws": "1.0.x"
   },
   "repository": {},

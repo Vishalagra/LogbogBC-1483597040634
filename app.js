@@ -9,9 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/user');
 
 var app = express();
-var ws = require('ws');		
+/*var ws = require('ws');		
 var WebSocket = require('ws/lib/WebSocket');
-var searchRes;
+var searchRes;*/
 
 var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
@@ -70,7 +70,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-connect_to_server();
+/*connect_to_server();
 
 
 //=================================================================================
@@ -118,13 +118,13 @@ function connect_to_server(){
 			}
 			else if(msgObj.msg === 'chainstats'){
 				console.log('rec', msgObj.msg, ': ledger blockheight', msgObj.chainstats.height, 'block', msgObj.blockstats.height);
-				/*var e = formatDate(msgObj.blockstats.transactions[0].timestamp.seconds * 1000, '%M/%d/%Y &nbsp;%I:%m%P');
+				var e = formatDate(msgObj.blockstats.transactions[0].timestamp.seconds * 1000, '%M/%d/%Y &nbsp;%I:%m%P');
 				$('#blockdate').html('<span style="color:#fff">TIME</span>&nbsp;&nbsp;' + e + ' UTC');
 				var temp =  {
 								id: msgObj.blockstats.height, 
 								blockstats: msgObj.blockstats
 							};
-				new_block(temp);*/								//send to blockchain.js
+				new_block(temp);								//send to blockchain.js
 			}
 			else {
 				console.log("inside final else to get searchRes");
@@ -152,7 +152,7 @@ function connect_to_server(){
 	}
 }
 
+*/
 
-
-app.set('ws', ws);
+//app.set('ws', ws);
 module.exports =  app ;
